@@ -68,6 +68,7 @@ router.post("/logup",(req,res)=>{
 router.get("/", async (req,res)=>{
 	const account = await Account.find();
 	console.log(account);
+        res.send(account); 
 	
 })
 
@@ -93,64 +94,5 @@ router.post("/edit/:id", async (req,res)=>{
 	}
 )
 })
-
-// const schema = Joi.object({
-//     name: Joi.string().min(3).max(60).required(),
-//     password: Joi.string().min(6).required(),
-//     email: Joi.string().email().required()
-// })
-
-// const logschema = Joi.object({
-//     password: Joi.string().min(6).required(),
-//     email: Joi.string().email().required()
-// })
-
-// router.get("/me",auth, async (req,res)=>{
-// 	 const account = await Account.findById(res.user._id).select("-password");
-// 	 res.render("me",{account});
-// })
-
-
-
-
-
-
-
-// router.get('/logout', (req, res) => {
-//   res.clearCookie('token');
-//   res.redirect("/log")
-// });
-
-
-
-
-// router.get("/register",(req,res)=>{
-// 		res.render("register");
-// })
-
-
-
-
-
-// router.get("/log",(req,res)=>{
-// 		res.render("log");
-// })
-
-
-// router.post("/delete/:id",auth,async (req,res)=>{
-// 	const account = await Account.findOne({_id : res.user._id});
-// 	const accountToDelete = await Account.findOne({_id : req.params.id});
-// 	if (res.user._id == req.params.id){
-// 		await Account.deleteOne({_id: req.params.id})
-// 		res.redirect("/logout");
-// 	};
-// 	if (account.author != "admin") return res.send("you are not admin");
-// 	if (accountToDelete.author == ("admin" || "moderator"))  return res.send("cant delete admin");
-
-// 	await Account.deleteOne({_id: req.params.id});
-// 	res.redirect("/");
-// })
-
-
-		
+	
 module.exports = router;
