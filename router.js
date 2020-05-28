@@ -66,8 +66,9 @@ router.post("/logup",(req,res)=>{
 
 
 router.get("/", async (req,res)=>{
-	const account = await Account.find();
-	console.log(account);
+	const accounts = await Account.find();
+	console.log(accounts);
+	res.json(accounts);
 	
 })
 
