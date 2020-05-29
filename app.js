@@ -2,8 +2,10 @@ const exp = require('express');
 const router = require('./router');
 const app = exp();
 const mlab = require('mongoose');
+const path = require('path'); 
 require('dotenv').config();
 
+app.use(exp.static(path.join(__dirname, 'client/build')));
 app.use(exp.json());
 app.use(exp.urlencoded({extended : false}));
 app.use("/",router);
